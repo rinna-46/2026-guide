@@ -1192,3 +1192,150 @@ details[open] .faq-toggle-icon::after {
     padding: 20px;
   }
 }
+/* ===================================
+   スマホ用のヘッダー中央揃え調整
+   =================================== */
+
+/* 1. ヘッダー全体とカプセルを中央に寄せる */
+.about-header {
+  display: flex;
+  justify-content: center; /* 横方向の中央寄せ */
+  align-items: center;     /* 縦方向の中央寄せ */
+  width: 100%;
+}
+.site-header{
+  display: flex;
+  justify-content: center; /* 横方向の中央寄せ */
+  align-items: center;     /* 縦方向の中央寄せ */
+  width: 100%;
+}
+
+.nav-capsule {
+  display: flex;
+  justify-content: center; /* 中のボタンを中央寄せ */
+  align-items: center;
+  flex-wrap: wrap;         /* スマホで幅が足りない時に綺麗に折り返す */
+  margin: 0 auto;          /* 左右中央に配置 */
+}
+
+/* 2. スマホ画面（画面幅768px以下）用の詳細調整 */
+@media (max-width: 768px) {
+  .about-header {
+    padding: 10px 0;       /* 上下の余白調整 */
+  }
+
+  .nav-capsule {
+    width: 90%;            /* スマホ画面からはみ出さないよう幅を調整 */
+    max-width: 400px;      /* 広がりすぎ防止 */
+    gap: 6px;              /* ボタン同士のすき間 */
+    padding: 8px 12px;
+  }
+
+  .nav-item {
+    text-align: center;    /* ボタン内のテキストを中央寄せ */
+    font-size: 12px;       /* スマホ用に文字サイズを少し調整（お好みで変更可） */
+  }
+}/* ===================================
+   Spline 3Dモデル用のスタイル
+   =================================== */
+.hero-spline-wrapper {
+  width: 100%;
+  height: 60vh;        /* 画面の高さの60%（お好みで調整してください） */
+  min-height: 400px;   /* 最低でも400pxの高さは確保する */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;         /* 他の要素の下に隠れないようにする */
+}
+
+/* 3Dビューア自体を枠いっぱいに広げる */
+.hero-spline-wrapper spline-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+/* スマホ画面用の高さ調整 */
+@media (max-width: 768px) {
+  .hero-spline-wrapper {
+    height: 50vh;
+    min-height: 300px;
+  }
+}/* ===================================
+   ローディング画面用のスタイル (お花のアニメーション)
+   =================================== */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* 背景をニュアンスホワイトに設定 */
+  background-color: var(--bg-main); 
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#loading-screen.is-loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* お花のベース設定 */
+.flower {
+  font-family: 'Kaisei Decol', sans-serif;
+  font-weight: 100;
+  color: var(--text-main);
+}
+
+.flower:not(:required) {
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+  display: inline-block;
+  
+  /* 中央のドットサイズ */
+  width: 16px;
+  height: 16px;
+  
+  /* 中心の色：ハニーイエロー */
+  background: var(--color-yellow); 
+  border-radius: 100%;
+  
+  /* 花びらの色：ミディアムオーキッド */
+  box-shadow:
+    white 0 0 15px 0,
+    var(--color-orchid) -12px -12px 0 4px,
+    var(--color-orchid) 12px -12px 0 4px,
+    var(--color-orchid) 12px 12px 0 4px,
+    var(--color-orchid) -12px 12px 0 4px;
+    
+  animation: flower 5s infinite ease-in-out;
+  transform-origin: 50% 50%;
+}
+
+/* 回転アニメーションのキーフレーム */
+@keyframes flower {
+  0% {
+    transform: rotateZ(0deg);
+    box-shadow:
+      white 0 0 15px 0,
+      var(--color-orchid) -12px -12px 0 4px,
+      var(--color-orchid) 12px -12px 0 4px,
+      var(--color-orchid) 12px 12px 0 4px,
+      var(--color-orchid) -12px 12px 0 4px;
+  }
+  50% {
+    transform: rotateZ(1080deg); /* 3 * 360deg */
+    box-shadow:
+      white 0 0 15px 0,
+      var(--color-orchid) 12px 12px 0 4px,
+      var(--color-orchid) -12px 12px 0 4px,
+      var(--color-orchid) -12px -12px 0 4px,
+      var(--color-orchid) 12px -12px 0 4px;
+  }
+}

@@ -35,7 +35,7 @@
       <p>みなさんの作品を1投稿100円として、<br>持続可能な社会づくりを担う人材を育成する団体へ<br>最大100万円の寄付を目指していましたが、無事達成することができました。<br>心あたたまるご投稿、本当にありがとうございます。</p>
     </div>
 
-<!-- 3つのカードボタン領域 -->
+    <!-- 3つのカードボタン領域 -->
     <div class="about-card-grid">
       <a href="simulator.html" class="about-card js-scroll-trigger delay-1">
         <h3>シミュレータ</h3>
@@ -52,7 +52,11 @@
         <p>連絡テンプレート文例でやりとりがスムーズに！</p>
       </a>
     </div>
+  </section>
 
+  <!-- ===============================
+       SERVICE セクション
+       =============================== -->
   <section class="sticky-service-section" id="stickyService">
     <div class="sticky-service-inner">
       <div class="sticky-service-sticky">
@@ -80,20 +84,21 @@
             </div>
           </div>
 
+          <!-- SERVICEの丸フレーム内のダミーを画像に変更 -->
           <div class="sticky-img-col">
             <div class="service-img-item is-active" data-index="0">
               <div class="service-circle-frame">
-                <div class="dummy-img-box"></div>
+                <img src="images/9.png" alt="システムインテグレーション" class="dummy-img-box" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
             </div>
             <div class="service-img-item" data-index="1">
               <div class="service-circle-frame">
-                <div class="dummy-img-box" style="filter: hue-rotate(60deg);"></div>
+                <img src="images/10.png" alt="エンジニアリングサービス" class="dummy-img-box" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
             </div>
             <div class="service-img-item" data-index="2">
               <div class="service-circle-frame">
-                <div class="dummy-img-box" style="filter: hue-rotate(140deg);"></div>
+                <img src="images/11.png" alt="ソフトウェアマネージドサービス" class="dummy-img-box" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
             </div>
           </div>
@@ -102,11 +107,15 @@
     </div>
   </section>
 
+  <!-- ===============================
+       TEARDROP セクション
+       =============================== -->
   <section class="teardrop-section">
     <div class="teardrop-grid">
       <div class="teardrop-item js-scroll-trigger delay-1">
         <div class="teardrop-img-box">
-          <div class="dummy-img-box"></div>
+          <!-- 雫型のダミーを画像に変更 -->
+          <img src="images/6.png" alt="ダミー見出し1" class="dummy-img-box" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <h3>1. ダミー見出しテキスト</h3>
         <p>文章の個性を引き出す表現を厳選。テキストだけでは味わえない、豊かな深みをお届けいたします。</p>
@@ -114,7 +123,8 @@
 
       <div class="teardrop-item js-scroll-trigger delay-2">
         <div class="teardrop-img-box">
-          <div class="dummy-img-box"></div>
+          <!-- 雫型のダミーを画像に変更 -->
+          <img src="images/7.png" alt="ダミー見出し2" class="dummy-img-box" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <h3>2. 滴る雫を描くシェイプ</h3>
         <p>一滴ずつ降り注ぐ瞬間を映した表現。ころんとした愛らしい形に、気品と豊かな香りをそっと寄せて。</p>
@@ -122,7 +132,8 @@
 
       <div class="teardrop-item js-scroll-trigger delay-3">
         <div class="teardrop-img-box">
-          <div class="dummy-img-box"></div>
+          <!-- 雫型のダミーを画像に変更 -->
+          <img src="images/8.png" alt="ダミー見出し3" class="dummy-img-box" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <h3>3. 仕上げに加えるひと手間</h3>
         <p>焼き上げた生地にひと手間を加える瞬間。ふんわり広がるやさしい質感と甘さがなめらかに解けます。</p>
@@ -130,13 +141,19 @@
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="social-icons js-scroll-trigger">
-      <div class="social-icon">Tw</div>
-      <div class="social-icon">Wb</div>
-      <div class="social-icon">Ml</div>
+  <!-- ===============================
+       FOOTER セクション
+       =============================== -->
+  <footer class="site-footer js-scroll-trigger">
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="X (Twitter)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#59495D"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="#" class="social-icon" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#59495D"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
     </div>
-    <p class="copyright js-scroll-trigger delay-1">Copyright(C) ダミーテキスト Portfolio Site. All Rights Reserved.</p>
+    <p class="copyright">&copy; 2026 Flasta Navi 〜お花屋さん相場ガイド〜 All Rights Reserved.</p>
   </footer>
 
   <script src="js/script.js"></script>

@@ -13,68 +13,73 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+<!-- ローディング画面 -->
+  <div id="loading-screen">
+    <span class="flower">Loading...</span>
+  </div>
   <!-- ===============================
        1. ヒーローエリア
        =============================== -->
   <section class="hero-section js-scroll-trigger">
-    <!-- キャラクターイラストの代わりのダミー背景 -->
-    <div class="hero-bg-dummy"></div>
-
-    <!-- 左側のメニューエリア -->
-    <div class="hero-side-left">
-      <div class="qr-group">
-        <span class="dummy-qr"></span>
-        <span class="dummy-qr"></span>
-      </div>
-      <a href="about.html" class="vertical-btn">ABOUT</a>
-      <a href="simulator.html" class="vertical-btn">SIMULATOR</a>
-    </div>
-
-    <!-- 右側のメニューエリア -->
-    <div class="hero-side-right">
-      <a href="faq.html" class="vertical-btn">FAQ</a>
-      <a href="reference.html" class="vertical-btn">REFERENCE</a>
-    </div>
-
+    <header class="site-header">
+    <nav class="nav-capsule">
+      <a href="index.html" class="nav-item  is-active">HOME</a>
+      <a href="about.html" class="nav-item">ABOUT</a>
+      <a href="simulator.html" class="nav-item">SIMULATOR</a>
+      <a href="faq.html" class="nav-item">FAQ</a>
+      <a href="reference.html" class="nav-item">REFERENCE</a>
+    </nav>
+  </header>
     <!-- 中央の巨大な重なりテキスト -->
-    <h1 class="hero-huge-text js-scroll-trigger delay-1">
-      <span class="text-gold">DUM</span>MY TE<span class="text-gold">XT</span>
-    </h1>
+ <div class="hero-center-content">
+  
+  <!-- ▼ 文字の上に画像を置く場合 -->
+  <div class="hero-main-img">
+    <img src="images/b.jpg" alt="メインビジュアル">
+  </div>
+
+<!-- 中央の3Dモデル（Spline） -->
+    <div class="hero-spline-wrapper js-scroll-trigger delay-1">
+      <!-- 読み込み用スクリプト -->
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
+      <!-- Splineの3Dモデル -->
+      <spline-viewer url="https://prod.spline.design/kwRnBzBkSzBRQ6ED/scene.splinecode"></spline-viewer>
+    </div>
+</div>
   </section>
 
   <!-- ===============================
        2. TOPICS セクション
        =============================== -->
   <section id="topics" class="topics-section">
-    <h2 class="topics-title js-scroll-trigger">TOPICS</h2>
+    <h2 class="topics-title js-scroll-trigger">ABOUT</h2>
 
     <div class="topics-grid">
       <div class="grid-item span-2-rows js-scroll-trigger delay-1">
-        <div class="dummy-img-box" style="height: 100%; min-height: 500px;"></div>
+        <!-- TOPICSの縦長ダミーを画像に変更 -->
+        <img src="images/2.png" alt="Flasta Naviのイメージ" class="dummy-img-box" style="height: 100%; min-height: 500px; width: 100%; object-fit: cover;">
       </div>
 
       <div class="grid-item grid-item--orchid js-scroll-trigger delay-2">
-        <h3>+ TV</h3>
-        <p>あのイーハトーヴォのすきとおった風<br>2026年3月22日 放送予定</p>
-        <br>
-        <p>夏でも底に冷たさをもつ青いそら<br>2026年10月7日 放送予定</p>
+        <h3>Flasta Naviって？</h3>
+        <p>初めてフラワースタンドを制作する方に向けた<br>並走型ナビサイト</p>
       </div>
 
       <div class="grid-item js-scroll-trigger delay-3">
-        <div class="dummy-img-box"></div>
+        <!-- TOPICSの正方形？ダミーを画像に変更 -->
+        <img src="images/3.png" alt="Flasta Naviのイメージ2" class="dummy-img-box" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
 
       <div class="grid-item grid-item--lavender js-scroll-trigger delay-1">
-        <h3>+ MAGAZINE, CM, YOUTUBE</h3>
-        <p>うつくしい森で飾られたモリーオ市<br>2026年8月25日 発売</p>
+        <h3>なにができるの？</h3>
+        <p>・フラワースタンドの予算シミュレーション<br>・おすすめのサイトの紹介</p>
         <br>
-        <p>郊外のぎらぎらひかる草の波<br>2026年12月9日 発売</p>
+        <p>編集の経験を元に選出したサイト</p>
       </div>
 
       <div class="grid-item grid-item--pink js-scroll-trigger delay-2">
-        <h3>+ RADIO</h3>
-        <p>ファゼーロとロザーロ、羊飼のミーロ<br>毎週土曜午後9時5分 放送</p>
+        <h3>ノウハウ</h3>
+        <p>過去二回フラワースタンドを出した経験からの紹介</p>
       </div>
     </div>
   </section>
@@ -85,28 +90,31 @@
   <section id="about" class="about-section">
     <div class="about-block">
       <div class="about-text js-scroll-trigger">
-        <h2>イーハトーヴォ領域における<br>唯一無二の存在へ</h2>
-        <p>あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。</p>
-        <p>またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。</p>
-        <p>では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。</p>
+        <h2>フラワースタンドって？</h2>
+        <p>ライブ会場、演劇の劇場、お店の開店祝いなどの入口によく飾られている、金属製のスタンドに乗せられた豪華なお花のことです。<br>
+特徴: お花だけでなく、バルーン（風船）、LEDライト、イラストパネル、リボンなどで華やかに装飾されます。<br>
+推し活文化: 最近では、アニメやアイドル、VTuberなどのイベントで、ファン有志がお金を出し合って「推し（大好きな出演者）」へ愛と感謝を伝えるために贈る文化が定着しています。</p>
       </div>
       <div class="about-images">
-        <div class="dummy-img-box js-scroll-trigger delay-1" style="min-height: 250px;"></div>
-        <div class="dummy-img-box js-scroll-trigger delay-2" style="min-height: 200px; width: 80%; margin-left: auto;"></div>
+        <!-- ABOUTのダミー画像2つを変更 -->
+        <img src="images/4.png"alt="フラワースタンド例1" class="dummy-img-box js-scroll-trigger delay-1" style="min-height: 250px; width: 100%; object-fit: cover;">
+        <img src="images/5.png" alt="フラワースタンド例2" class="dummy-img-box js-scroll-trigger delay-2" style="min-height: 250px; margin-left: auto; width: 100%; object-fit: cover;">
       </div>
     </div>
 
     <div id="message" class="message-block js-scroll-trigger">
       <div class="message-bg-text">MESSAGE</div>
       
-      <div class="message-circle-dummy"></div>
+      <!-- メッセージの丸いダミーを画像に変更 -->
+      <img src="images/10.jpg" alt="編集者プロフィール" class="message-circle-dummy" style="object-fit: cover;">
+      
       <div class="message-content">
-        <h3>2026年にモリーオ市は100周年を迎えます。<br>
-        私たちがこれまでと変わらず、<br>
-        これからもずっと大切に守り続けていくものを、<br>
-        「学ぶ喜びをずっと。」という言葉で表現しています。<br>
-        その思いと取り組みをご紹介します。</h3>
-        <a href="#" class="btn-gold">私たちの思い <span>●</span></a>
+        <h3>編集者<br>
+        推しへの感謝から独学で企画をし<br>
+        過去二回フラワースタンドを出させていただきました。<br>
+        進行が一人でかなり大変だったため<br>
+        わかりやすく知れるサイトが欲しかった。</h3>
+        <a href="https://www.sakaseru.jp/mina/user/organized-events/266222" class="btn-gold">編集者のフラワースタンドはこちらから<span>●</span></a>
       </div>
     </div>
   </section>
@@ -114,14 +122,18 @@
   <!-- ===============================
        4. FOOTER セクション
        =============================== -->
-  <footer class="site-footer">
-    <div class="social-icons js-scroll-trigger">
-      <div class="social-icon">Tw</div>
-      <div class="social-icon">Wb</div>
-      <div class="social-icon">Ml</div>
-    </div>
-    <p class="copyright js-scroll-trigger delay-1">Copyright(C) ダミーテキスト Portfolio Site. All Rights Reserved.</p>
-  </footer>
+    <footer class="site-footer js-scroll-trigger">
+      <div class="social-icons">
+        <a href="#" class="social-icon" aria-label="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#59495D"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#59495D"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+      <p class="copyright">&copy; 2026 Flasta Navi 〜お花屋さん相場ガイド〜 All Rights Reserved.</p>
+    </footer>
+
 
   <script src="js/script.js"></script>
 </body>

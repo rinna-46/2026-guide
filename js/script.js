@@ -90,3 +90,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// ページ（画像や3Dモデルなど）が完全に読み込まれたら実行
+window.addEventListener('load', function() {
+  
+  // 読み込み完了後、さらに「2秒（2000ミリ秒）」待ってからフワッと消す
+  // ※もっと長くしたい場合はここを 3000（3秒）などに変更してください
+  setTimeout(function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+      loadingScreen.classList.add('is-loaded');
+    }
+  }, 3500); 
+
+});
+
+// 【保険】通信が遅い時の強制終了を 5秒 → 10秒 に伸ばす
+setTimeout(function() {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen && !loadingScreen.classList.contains('is-loaded')) {
+    loadingScreen.classList.add('is-loaded');
+  }
+}, 10000); // 10000 = 10秒
