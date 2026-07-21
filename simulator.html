@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>予算シミュレーター - Flasta Navi</title>
+    <!-- 外部CSSファイルの読み込み -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+<header class="simulator-header">
+  <nav class="nav-capsule">
+    <a href="index.html" class="nav-item">HOME</a>
+    <a href="about.html" class="nav-item">ABOUT</a>
+    <a href="simulator.html" class="nav-item is-active">SIMULATOR</a>
+    <a href="faq.html" class="nav-item">FAQ</a>
+    <a href="reference.html" class="nav-item">REFERENCE</a>
+  </nav>
+</header>
+    <main>
+      <!-- ページタイトルエリア -->
+      <section class="page-hero js-scroll-trigger">
+        <h1 class="page-hero-title">SIMULATOR</h1>
+        <p class="page-hero-sub">予算シミュレーター</p>
+        <p class="page-hero-lead">【数量掛け算対応】バルーン・パネルの個数もリアルタイムに反映する決定版</p>
+      </section>
+
+      <!-- シミュレーターメインエリア -->
+      <section class="simulator-container">
+        <form id="js-simulator-form">
+          <div class="simulator-layout">
+            
+            <!-- 入力ステップ群 -->
+            <div class="simulator-steps">
+
+              <!-- STEP 1: フラスタのタイプを選ぶ -->
+              <div class="sim-card js-scroll-trigger">
+                <h2 class="sim-card-title">1. フラスタのタイプを選ぶ</h2>
+                <div class="opt-group">
+                  <label class="opt-label">
+                    <input type="radio" name="flower_type" value="10000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">1段：お任せ（色指定不可）</span>
+                      <span class="opt-price">¥10,000</span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="radio" name="flower_type" value="20000" checked />
+                    <div class="opt-btn">
+                      <span class="opt-name">1段：オーダーメイド（標準）</span>
+                      <span class="opt-price">
+                        ¥20,000
+                        <small>(相場: 1.5万〜3万円)</small>
+                      </span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="radio" name="flower_type" value="35000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">2段：豪華スタンダード</span>
+                      <span class="opt-price">
+                        ¥35,000
+                        <small>(相場: 3万〜5万円)</small>
+                      </span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="radio" name="flower_type" value="50000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">モチーフを型どったフラスタ</span>
+                      <span class="opt-price">¥50,000〜</span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="radio" name="flower_type" value="100000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">複数基を連結させるフラスタ</span>
+                      <span class="opt-price">¥100,000〜</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- STEP 2: 配送回収料の確認 -->
+              <div class="sim-card js-scroll-trigger">
+                <h2 class="sim-card-title">2. 配送回収料の確認</h2>
+                <div class="opt-group">
+                  <label class="opt-label">
+                    <input type="radio" name="delivery_fee" value="0" />
+                    <div class="opt-btn">
+                      <span class="opt-name">送料無料（商品代に含む店舗）</span>
+                      <span class="opt-price">+ ¥0</span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="radio" name="delivery_fee" value="3000" checked />
+                    <div class="opt-btn">
+                      <span class="opt-name">自社配送・回収エリア（通常）</span>
+                      <span class="opt-price">+ ¥3,000</span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="radio" name="delivery_fee" value="5000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">遠方・夜間特別回収など</span>
+                      <span class="opt-price">+ ¥5,000</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- STEP 3: 追加バルーン（数量入力） -->
+              <div class="sim-card js-scroll-trigger">
+                <h2 class="sim-card-title">3. 追加バルーン（数量入力）</h2>
+                <div class="qty-list">
+                  <div class="qty-item">
+                    <span class="qty-name">バルーン 18インチ程度 <small>(¥500/個)</small></span>
+                    <input type="number" min="0" value="0" data-price="500" class="qty-input" />
+                  </div>
+                  <div class="qty-item">
+                    <span class="qty-name">バルーン 30インチ程度 <small>(¥1,200/個)</small></span>
+                    <input type="number" min="0" value="0" data-price="1200" class="qty-input" />
+                  </div>
+                  <div class="qty-item">
+                    <span class="qty-name">特大ハートバルーン <small>(¥2,500/個)</small></span>
+                    <input type="number" min="0" value="0" data-price="2500" class="qty-input" />
+                  </div>
+                  <div class="qty-item">
+                    <span class="qty-name">文字バルーン <small>(¥200/一文字)</small></span>
+                    <input type="number" min="0" value="0" data-price="200" class="qty-input" placeholder="文字数" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 4: 追加パネル（数量入力） -->
+              <div class="sim-card js-scroll-trigger">
+                <h2 class="sim-card-title">4. 追加パネル（数量入力）</h2>
+                <div class="qty-list">
+                  <div class="qty-item">
+                    <span class="qty-name">パネル A3サイズ <small>(¥1,400/枚)</small></span>
+                    <input type="number" min="0" value="0" data-price="1400" class="qty-input" />
+                  </div>
+                  <div class="qty-item">
+                    <span class="qty-name">パネル A2サイズ <small>(¥2,800/枚)</small></span>
+                    <input type="number" min="0" value="0" data-price="2800" class="qty-input" />
+                  </div>
+                  <div class="qty-item">
+                    <span class="qty-name">パネル A1サイズ <small>(¥5,500/枚)</small></span>
+                    <input type="number" min="0" value="0" data-price="5500" class="qty-input" />
+                  </div>
+                  <div class="qty-item">
+                    <span class="qty-name">パネル A0サイズ <small>(¥11,000/枚)</small></span>
+                    <input type="number" min="0" value="0" data-price="11000" class="qty-input" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 5: その他リクエスト -->
+              <div class="sim-card js-scroll-trigger">
+                <h2 class="sim-card-title">5. その他リクエスト（該当するものにチェック）</h2>
+                <div class="opt-group">
+                  <label class="opt-label">
+                    <input type="checkbox" value="2000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">スタンド隠しの布を巻く（ラッピング）</span>
+                      <span class="opt-price">+ ¥2,000</span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="checkbox" value="3000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">花の種類指定・多色指定（メンカラ5色など）</span>
+                      <span class="opt-price">+ ¥3,000</span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="checkbox" value="5000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">希少色・染め花の指定（青・黒・ゴールドなど）</span>
+                      <span class="opt-price">+ ¥5,000</span>
+                    </div>
+                  </label>
+                  <label class="opt-label">
+                    <input type="checkbox" value="5000" />
+                    <div class="opt-btn">
+                      <span class="opt-name">花の原価高騰期（母の日・年末年始など）</span>
+                      <span class="opt-price">+ ¥5,000</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- サイド固定：計算結果・進むボタン -->
+            <div class="sim-result-sticky js-scroll-trigger">
+              <div class="result-card">
+                <p class="result-label">選択中の「合計金額」の目安</p>
+                <div class="result-price-box">
+                  約 <span id="js-total-price" class="price-num">0</span> 円
+                </div>
+                
+                <div class="tax-info">
+                  <p class="tax-title">【Sakaseru参考・お支払い総額の計算式】</p>
+                  <p>上記金額に、消費税（10%）とシステム手数料（5%）が加算されます。</p>
+                  <p style="margin-top: 6px; opacity: 0.8; font-size: 0.72rem;">※バルーンの個数やパネルのサイズ掛け算もすべてリアルタイム反映されています。</p>
+                </div>
+
+                <a href="checklist.html" class="btn-gold">この予算感でチェックリストに進む</a>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer js-scroll-trigger">
+      <div class="social-icons">
+        <a href="#" class="social-icon" aria-label="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#59495D"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#59495D"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+      <p class="copyright">&copy; 2026 Flasta Navi 〜お花屋さん相場ガイド〜 All Rights Reserved.</p>
+    </footer>
+
+    <!-- リアルタイム自動計算スクリプト -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("js-simulator-form");
+        const totalDisplay = document.getElementById("js-total-price");
+
+        function calculateTotal() {
+          let total = 0;
+
+          // 1. ラジオボタンの集計
+          const radios = form.querySelectorAll('input[type="radio"]:checked');
+          radios.forEach((radio) => {
+            total += parseInt(radio.value || 0, 10);
+          });
+
+          // 2. チェックボックスの集計
+          const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+          checkboxes.forEach((cb) => {
+            total += parseInt(cb.value || 0, 10);
+          });
+
+          // 3. 数量入力の集計
+          const numberInputs = form.querySelectorAll('input[type="number"]');
+          numberInputs.forEach((input) => {
+            const price = parseInt(input.getAttribute("data-price") || 0, 10);
+            const qty = parseInt(input.value || 0, 10);
+            if (qty > 0) {
+              total += price * qty;
+            }
+          });
+
+          // 4. 数値の整形（カンマ区切り出力）
+          totalDisplay.textContent = total.toLocaleString();
+        }
+
+        form.addEventListener("input", calculateTotal);
+        form.addEventListener("change", calculateTotal);
+        calculateTotal();
+      });
+    </script>
+    
+    <!-- 共通のふわっとアニメーションJSを読み込み -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
