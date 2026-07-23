@@ -1,5 +1,63 @@
 @charset "UTF-8";
+/* ==========================================================================
+   1. ナビゲーション（メニュー）を画像の上に浮かせる
+   ========================================================================== */
+.site-header {
+  position: absolute; /* ★画像の上に重ねて配置する */
+  top: 20px; /* 上からの位置 */
+  left: 50%;
+  transform: translateX(-50%); /* 画面中央に配置 */
+  width: 90%;
+  max-width: 400px; /* スマホで見やすい幅に調整 */
+  z-index: 10; /* 最前面に表示 */
+}
 
+/* メニューの白枠スタイル（すでにある場合は調整してください） */
+.nav-container {
+  background-color: rgba(255, 255, 255, 0.85); /* ほんのり透ける白 */
+  border-radius: 30px; /* 角丸 */
+  padding: 12px 16px;
+}
+
+/* ==========================================================================
+   2. ヒーローエリア（背景画像 ＋ タイトル）の固定
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 画面全体の高さに設定 */
+  display: flex;
+  align-items: center; /* FLASTA NAVI を上下中央へ */
+  justify-content: center; /* FLASTA NAVI を左右中央へ */
+  overflow: hidden;
+}
+
+/* 背景画像（画面いっぱいに敷き詰める） */
+.hero-main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* 一番後ろに配置 */
+}
+
+.hero-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* はみ出た部分は自動カットしてフィット */
+  object-position: center;
+}
+
+/* タイトル文字 */
+.hero-title {
+  position: relative;
+  z-index: 1; /* 画像（z-index: 0）の上に重ねる */
+  color: #ffffff;
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* 見やすくするためのうっすら影 */
+}
 /* ==========================================================================
    TABLE OF CONTENTS (目次)
    --------------------------------------------------------------------------
