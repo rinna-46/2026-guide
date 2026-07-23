@@ -6,29 +6,32 @@
    1. Variables & Theme Settings (カラー・変数)
    2. Base & Reset Styles (ベース設定)
    3. Animations & Delay Utilities (スクロールアニメーション)
-   4. Common UI Components (汎用ボタン・共通パーツ)
-   5. Header & Navigation (カプセルナビ・SNSエリア)
-   6. Hero Areas (TOP / ABOUT / シミュレーター ヒーロー)
-   7. TOP & ABOUT Sections (Topics / Message / Service / Teardrop)
-   8. Simulator Components (選択ボタン・入力フォーム・結果エリア)
-   9. Footer Section
-   10. Responsive Adjustments (メディアクエリ統合)
+   4. Loading Screen (お花のアニメーション)
+   5. Common UI Components (汎用ボタン・共通パーツ)
+   6. Header & Navigation (カプセルナビ・SNSエリア)
+   7. Hero Areas & Spline 3D (TOP / ABOUT / シミュレーター ヒーロー)
+   8. TOP & ABOUT Sections (Topics / Message / Service / Teardrop)
+   9. Simulator Components (選択ボタン・入力フォーム・結果エリア)
+   10. FAQ Section
+   11. Reference Section
+   12. Footer Section
+   13. Responsive Adjustments (メディアクエリ統合)
    ========================================================================== */
 
 /* ==========================================================================
    1. Variables & Theme Settings
    ========================================================================== */
 :root {
-  --bg-main: #F9F6FC;         /* ニュアンスホワイト */
-  --bg-sub: #FFF0FA;          /* シェルピンク */
-  --color-pink: #F2CBE4;      /* パステルピンク */
-  --color-lavender: #D7C3F1;  /* ソフトラベンダー */
-  --color-orchid: #CA90C4;    /* ミディアムオーキッド */
-  --color-gold: #FFB703;      /* マリーゴールド */
-  --color-yellow: #FFCA3A;    /* ハニーイエロー */
-  --text-main: #59495D;       /* ディープパープルグレー */
-  --text-dark: #1A1A1A;       /* ダークテキスト */
-  --color-white: #FFFFFF;
+  --bg-main: #f9f6fc; /* ニュアンスホワイト */
+  --bg-sub: #fff0fa; /* シェルピンク */
+  --color-pink: #f2cbe4; /* パステルピンク */
+  --color-lavender: #d7c3f1; /* ソフトラベンダー */
+  --color-orchid: #ca90c4; /* ミディアムオーキッド */
+  --color-gold: #ffb703; /* マリーゴールド */
+  --color-yellow: #ffca3a; /* ハニーイエロー */
+  --text-main: #59495d; /* ディープパープルグレー */
+  --text-dark: #1a1a1a; /* ダークテキスト */
+  --color-white: #ffffff;
 }
 
 /* ==========================================================================
@@ -40,7 +43,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Kaisei Decol', serif !important;
+  font-family: "Kaisei Decol", serif !important;
 }
 
 body {
@@ -58,11 +61,12 @@ a {
 /* ==========================================================================
    3. Animations & Delay Utilities
    ========================================================================== */
-/* 一時確認用：強制表示させる設定 */
 .js-scroll-trigger {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .js-scroll-trigger.is-active {
@@ -72,32 +76,109 @@ a {
 
 /* ヘッダータグにjs-scroll-triggerがついていても透明化させない例外指定 */
 header.js-scroll-trigger,
-.about-header.js-scroll-trigger {
+.about-header.js-scroll-trigger,
+.site-header.js-scroll-trigger {
   opacity: 1 !important;
   transform: none !important;
 }
 
-.delay-1 { transition-delay: 0.15s; }
-.delay-2 { transition-delay: 0.3s; }
-.delay-3 { transition-delay: 0.45s; }
+.delay-1 {
+  transition-delay: 0.15s;
+}
+.delay-2 {
+  transition-delay: 0.3s;
+}
+.delay-3 {
+  transition-delay: 0.45s;
+}
 
 /* ==========================================================================
-   4. Common UI Components
+   4. Loading Screen (お花のアニメーション)
    ========================================================================== */
-/* 共通ダミー画像パターン */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-main);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+#loading-screen.is-loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.flower {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 100;
+  color: var(--text-main);
+}
+
+.flower:not(:required) {
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: var(--color-yellow);
+  border-radius: 100%;
+  box-shadow:
+    white 0 0 15px 0,
+    var(--color-orchid) -12px -12px 0 4px,
+    var(--color-orchid) 12px -12px 0 4px,
+    var(--color-orchid) 12px 12px 0 4px,
+    var(--color-orchid) -12px 12px 0 4px;
+  animation: flower 5s infinite ease-in-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes flower {
+  0% {
+    transform: rotateZ(0deg);
+    box-shadow:
+      white 0 0 15px 0,
+      var(--color-orchid) -12px -12px 0 4px,
+      var(--color-orchid) 12px -12px 0 4px,
+      var(--color-orchid) 12px 12px 0 4px,
+      var(--color-orchid) -12px 12px 0 4px;
+  }
+  50% {
+    transform: rotateZ(1080deg);
+    box-shadow:
+      white 0 0 15px 0,
+      var(--color-orchid) 12px 12px 0 4px,
+      var(--color-orchid) -12px 12px 0 4px,
+      var(--color-orchid) -12px -12px 0 4px,
+      var(--color-orchid) 12px -12px 0 4px;
+  }
+}
+
+/* ==========================================================================
+   5. Common UI Components
+   ========================================================================== */
 .dummy-img-box {
   width: 100%;
   height: 100%;
   background-color: var(--color-pink);
-  background-image: 
-    radial-gradient(var(--bg-main) 15%, transparent 16%),
-    radial-gradient(var(--bg-main) 15%, transparent 16%);
+  background-image:
+    radial-gradient(var(--bg-main) 15%, transparent 16%), radial-gradient(var(--bg-main) 15%, transparent 16%);
   background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
+  background-position:
+    0 0,
+    10px 10px;
   opacity: 0.85;
 }
 
-/* セクション共通タイトル */
 .section-title {
   margin-bottom: 30px;
   color: var(--text-main);
@@ -105,7 +186,6 @@ header.js-scroll-trigger,
   letter-spacing: 0.05em;
 }
 
-/* 共通ゴールドボタン */
 .btn-gold {
   display: inline-flex;
   justify-content: center;
@@ -129,20 +209,11 @@ header.js-scroll-trigger,
 }
 
 /* ==========================================================================
-   5. Header & Navigation
+   6. Header & Navigation (カプセルナビ・SNSエリア)
    ========================================================================== */
-.about-header {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 80px;
-  padding: 20px 5%;
-  background-color: var(--bg-main);
-  z-index: 100;
-}
-
-/* smulator → simulator にスペルを修正 */
+/* 通常のヘッダー（ABOUT, シミュレーターなど下層ページ用） */
+.site-header,
+.about-header,
 .simulator-header {
   position: relative;
   display: flex;
@@ -152,18 +223,24 @@ header.js-scroll-trigger,
   padding: 20px 5%;
   background-color: var(--bg-main);
   z-index: 100;
+  width: 100%;
 }
+
+/* カプセルナビゲーション（絶対に画面中央へ配置） */
 .nav-capsule {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-  padding: 6px 12px;
-  background-color: #EFEBF5;
-  border: 1px solid #D8CEE3;
-  border-radius: 30px;
+  padding: 8px 16px;
+  background-color: rgba(239, 235, 245, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid #d8cee3;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   z-index: 10;
   white-space: nowrap;
 }
@@ -207,8 +284,18 @@ header.js-scroll-trigger,
   opacity: 0.8;
 }
 
+/* TOPページの背景画像の上に浮かせるヘッダーの特別指定 */
+.hero-section .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 100;
+}
+
 /* ==========================================================================
-   6. Hero Areas
+   7. Hero Areas & Spline 3D
    ========================================================================== */
 /* TOP ヒーロー */
 .hero-section {
@@ -219,6 +306,24 @@ header.js-scroll-trigger,
   background-color: var(--bg-sub);
   border-bottom: 2px solid var(--color-orchid);
   overflow: hidden;
+}
+
+/* 背景画像（全画面表示用） */
+.hero-main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .hero-bg-dummy {
@@ -243,8 +348,12 @@ header.js-scroll-trigger,
   z-index: 15;
 }
 
-.hero-side-left { left: 3%; }
-.hero-side-right { right: 3%; }
+.hero-side-left {
+  left: 3%;
+}
+.hero-side-right {
+  right: 3%;
+}
 
 .qr-group {
   display: flex;
@@ -274,7 +383,10 @@ header.js-scroll-trigger,
   writing-mode: vertical-rl;
   opacity: 0.7;
   cursor: pointer;
-  transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .vertical-btn:hover {
@@ -283,23 +395,27 @@ header.js-scroll-trigger,
   transform: scale(1.08);
 }
 
+/* タイトルテキスト (FLASTA NAVI) */
+.hero-title,
 .hero-huge-text {
   position: absolute;
-  bottom: 8%;
-  left: 0;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  color: var(--color-yellow);
-  font-size: clamp(3.5rem, 12.5vw, 11rem);
+  color: var(--color-white);
+  font-size: clamp(2.5rem, 8vw, 7rem);
   font-weight: 700;
-  line-height: 0.9;
+  line-height: 1;
   text-align: center;
-  text-shadow: 4px 4px 0px rgba(89, 73, 93, 0.15);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
   z-index: 10;
+  margin: 0;
 }
 
 .text-gold {
-  color: #FFF0FA;
+  color: #fff0fa;
 }
 
 /* ABOUT ヒーロー */
@@ -320,7 +436,7 @@ header.js-scroll-trigger,
 
 .about-hero-sub {
   margin-bottom: 50px;
-  color: #9C58B2;
+  color: #9c58b2;
   font-size: 0.95rem;
   font-weight: bold;
 }
@@ -350,7 +466,7 @@ header.js-scroll-trigger,
 
 .page-hero-sub {
   margin-bottom: 20px;
-  color: #9C58B2;
+  color: #9c58b2;
   font-size: 0.95rem;
   font-weight: bold;
 }
@@ -364,10 +480,26 @@ header.js-scroll-trigger,
   font-size: clamp(0.85rem, 1.1vw, 0.95rem);
 }
 
+/* Spline 3Dモデル用スタイル */
+.hero-spline-wrapper {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-spline-wrapper spline-viewer {
+  width: 100%;
+  height: 100%;
+}
+
 /* ==========================================================================
-   7. TOP & ABOUT Sections
+   8. TOP & ABOUT Sections
    ========================================================================== */
-/* カードグリッド */
 .about-card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -385,17 +517,20 @@ header.js-scroll-trigger,
   align-items: center;
   min-height: 180px;
   padding: 40px 24px;
-  background-color: #FAF0F7;
+  background-color: #faf0f7;
   border: 1px solid rgba(202, 144, 196, 0.25);
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(89, 73, 93, 0.08);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
   cursor: pointer;
 }
 
 .about-card:hover {
-  background-color: #F6E2F0;
+  background-color: #f6e2f0;
   box-shadow: 0 18px 36px rgba(89, 73, 93, 0.16);
   transform: translateY(-8px);
 }
@@ -408,12 +543,11 @@ header.js-scroll-trigger,
 }
 
 .about-card p {
-  color: #7A697E;
+  color: #7a697e;
   font-size: 0.88rem;
   line-height: 1.6;
 }
 
-/* Topics Section */
 .topics-section {
   position: relative;
   padding: 100px 5%;
@@ -444,10 +578,24 @@ header.js-scroll-trigger,
   z-index: 1;
 }
 
-.span-2-rows { grid-row: span 2; }
-.grid-item--orchid { background-color: var(--color-orchid); color: var(--color-white); padding: 40px 30px; }
-.grid-item--lavender { background-color: var(--color-lavender); color: var(--text-main); padding: 40px 30px; }
-.grid-item--pink { background-color: var(--color-pink); color: var(--text-main); padding: 40px 30px; }
+.span-2-rows {
+  grid-row: span 2;
+}
+.grid-item--orchid {
+  background-color: var(--color-orchid);
+  color: var(--color-white);
+  padding: 40px 30px;
+}
+.grid-item--lavender {
+  background-color: var(--color-lavender);
+  color: var(--text-main);
+  padding: 40px 30px;
+}
+.grid-item--pink {
+  background-color: var(--color-pink);
+  color: var(--text-main);
+  padding: 40px 30px;
+}
 
 .grid-item h3 {
   margin-bottom: 15px;
@@ -461,7 +609,6 @@ header.js-scroll-trigger,
   border-bottom: 2px solid rgba(89, 73, 93, 0.2);
 }
 
-/* About & Message */
 .about-section {
   padding: 120px 8%;
   background-color: var(--color-white);
@@ -474,9 +621,18 @@ header.js-scroll-trigger,
   margin: 0 auto 120px;
 }
 
-.about-text { flex: 1.2; }
-.about-text h2 { margin-bottom: 30px; color: var(--text-main); font-size: clamp(1.4rem, 3vw, 2.2rem); }
-.about-text p { margin-bottom: 16px; font-size: clamp(0.85rem, 1.1vw, 1rem); }
+.about-text {
+  flex: 1.2;
+}
+.about-text h2 {
+  margin-bottom: 30px;
+  color: var(--text-main);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+.about-text p {
+  margin-bottom: 16px;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+}
 
 .about-images {
   display: flex;
@@ -518,10 +674,16 @@ header.js-scroll-trigger,
   z-index: 2;
 }
 
-.message-content { position: relative; z-index: 3; }
-.message-content h3 { margin-bottom: 24px; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.7; }
+.message-content {
+  position: relative;
+  z-index: 3;
+}
+.message-content h3 {
+  margin-bottom: 24px;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+}
 
-/* Service Section */
 .service-section {
   padding: 80px 8%;
   background-color: var(--color-white);
@@ -554,23 +716,40 @@ header.js-scroll-trigger,
   align-items: center;
   width: 100px;
   height: 100px;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   border-radius: 50%;
   font-size: 2rem;
 }
 
-.service-content { flex: 1; }
-.service-num { display: block; margin-bottom: 4px; color: #AAA; font-size: 0.9rem; }
-.service-content h3 { font-size: 1.5rem; line-height: 1.2; letter-spacing: 0.05em; }
-.service-sub-ja { margin-bottom: 16px; color: #999; font-size: 0.8rem; }
+.service-content {
+  flex: 1;
+}
+.service-num {
+  display: block;
+  margin-bottom: 4px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+.service-content h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+.service-sub-ja {
+  margin-bottom: 16px;
+  color: #999;
+  font-size: 0.8rem;
+}
 
-/* Sticky Service */
 .sticky-service-section {
   position: relative;
   background-color: var(--color-white);
 }
 
-.sticky-service-inner { position: relative; height: 280vh; }
+.sticky-service-inner {
+  position: relative;
+  height: 280vh;
+}
 .sticky-service-sticky {
   position: sticky;
   top: 0;
@@ -592,7 +771,10 @@ header.js-scroll-trigger,
   margin: 0 auto;
 }
 
-.sticky-text-col { position: relative; min-height: 240px; }
+.sticky-text-col {
+  position: relative;
+  min-height: 240px;
+}
 .service-text-item {
   position: absolute;
   top: 0;
@@ -601,7 +783,9 @@ header.js-scroll-trigger,
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .service-text-item.is-active {
@@ -620,20 +804,31 @@ header.js-scroll-trigger,
 
 .service-img-item {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transform: scale(0.92);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
-.service-img-item.is-active { opacity: 1; transform: scale(1); }
-.service-circle-frame { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; }
+.service-img-item.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.service-circle-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
-/* Teardrop Section */
 .teardrop-section {
   padding: 100px 8%;
-  background-color: #E7DEEE;
+  background-color: #e7deee;
 }
 
 .teardrop-grid {
@@ -644,7 +839,9 @@ header.js-scroll-trigger,
   margin: 0 auto;
 }
 
-.teardrop-item { text-align: center; }
+.teardrop-item {
+  text-align: center;
+}
 .teardrop-img-box {
   width: 200px;
   height: 240px;
@@ -655,7 +852,7 @@ header.js-scroll-trigger,
 }
 
 /* ==========================================================================
-   8. Simulator Components
+   9. Simulator Components
    ========================================================================== */
 .simulator-container {
   max-width: 1100px;
@@ -693,7 +890,6 @@ header.js-scroll-trigger,
   font-weight: 700;
 }
 
-/* 選択肢ボタン (ラジオボタン/チェックボックス) */
 .opt-group {
   display: flex;
   flex-direction: column;
@@ -734,11 +930,23 @@ header.js-scroll-trigger,
   box-shadow: 0 4px 12px rgba(202, 144, 196, 0.25);
 }
 
-.opt-name { font-size: 0.92rem; font-weight: 500; }
-.opt-price { font-size: 0.95rem; font-weight: 700; color: #9C58B2; text-align: right; }
-.opt-price small { display: block; font-size: 0.75rem; font-weight: normal; color: #888; }
+.opt-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.opt-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #9c58b2;
+  text-align: right;
+}
+.opt-price small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: #888;
+}
 
-/* 数量フォーム */
 .qty-list {
   display: flex;
   flex-direction: column;
@@ -750,7 +958,7 @@ header.js-scroll-trigger,
   justify-content: space-between;
   align-items: center;
   padding-bottom: 12px;
-  border-bottom: 1px dashed #EFEBF5;
+  border-bottom: 1px dashed #efebf5;
 }
 
 .qty-item:last-child {
@@ -758,8 +966,13 @@ header.js-scroll-trigger,
   padding-bottom: 0;
 }
 
-.qty-name { font-size: 0.9rem; }
-.qty-name small { color: #9C58B2; margin-left: 6px; }
+.qty-name {
+  font-size: 0.9rem;
+}
+.qty-name small {
+  color: #9c58b2;
+  margin-left: 6px;
+}
 
 .qty-input {
   width: 85px;
@@ -781,7 +994,6 @@ header.js-scroll-trigger,
   box-shadow: 0 0 0 3px rgba(202, 144, 196, 0.2);
 }
 
-/* 計算結果サイドバー (Sticky) */
 .sim-result-sticky {
   position: sticky;
   top: 30px;
@@ -789,15 +1001,24 @@ header.js-scroll-trigger,
 
 .result-card {
   padding: 32px 24px;
-  background: linear-gradient(145deg, #FFFFFF 0%, var(--bg-sub) 100%);
+  background: linear-gradient(145deg, #ffffff 0%, var(--bg-sub) 100%);
   border: 2px solid var(--color-orchid);
   border-radius: 24px;
   box-shadow: 0 12px 30px rgba(89, 73, 93, 0.1);
   text-align: center;
 }
 
-.result-label { font-size: 0.9rem; font-weight: bold; color: var(--text-main); }
-.result-price-box { margin: 16px 0; font-size: 1.2rem; font-weight: bold; }
+.result-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+.result-price-box {
+  margin: 16px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
 .price-num {
   font-size: clamp(2.4rem, 4vw, 3.2rem);
@@ -816,122 +1037,26 @@ header.js-scroll-trigger,
   text-align: left;
 }
 
-.tax-title { margin-bottom: 4px; color: #9C58B2; font-weight: bold; }
+.tax-title {
+  margin-bottom: 4px;
+  color: #9c58b2;
+  font-weight: bold;
+}
 
 /* ==========================================================================
-   9. Footer Section
-   ========================================================================== */
-.site-footer {
-  position: relative;
-  padding: 60px 20px;
-  background-color: var(--color-lavender);
-  text-align: center;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.social-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  background-color: var(--bg-main);
-  border-radius: 50%;
-}
-
-.copyright { font-size: 0.85rem; }
-
-/* ==========================================================================
-   10. Responsive Adjustments
-   ========================================================================== */
-/* タブレット〜PC中間（960px以下） */
-@media (max-width: 960px) {
-  .about-header {
-    flex-direction: column;
-    gap: 16px;
-    padding: 15px 20px;
-  }
-
-  .nav-capsule {
-    position: static;
-    transform: none;
-    max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .header-sns {
-    margin-left: 0;
-  }
-
-  .simulator-layout { grid-template-columns: 1fr; }
-  .sim-result-sticky { position: static; }
-  .about-card-grid { grid-template-columns: repeat(2, 1fr); }
-  .sticky-service-content { grid-template-columns: 1fr; gap: 30px; }
-  .sticky-img-col { max-width: 260px; }
-  .teardrop-grid { grid-template-columns: 1fr; gap: 60px; }
-}
-
-/* タブレット・スマホ（768px以下） */
-@media (max-width: 768px) {
-  .hero-side-left, .hero-side-right { top: 20px; }
-  .dummy-qr { width: 30px; height: 30px; }
-  .topics-title { top: 10px; }
-  .topics-grid { grid-template-columns: 1fr; margin-top: 80px; }
-  .span-2-rows { grid-row: auto; }
-  .about-block { flex-direction: column; gap: 40px; margin-bottom: 80px; }
-  .message-block { flex-direction: column; padding: 40px 20px; text-align: center; }
-  .message-circle-dummy { width: 160px; height: 160px; }
-}
-
-/* スマホ小型（600px以下） */
-@media (max-width: 600px) {
-  .nav-item { padding: 6px 12px; font-size: 0.8rem; }
-  .about-card-grid { grid-template-columns: 1fr; }
-  .service-item { flex-direction: column; gap: 20px; text-align: center; }
-  .sim-card { padding: 20px 16px; }
-  .opt-btn { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .opt-price { text-align: left; }
-}
-/* ==========================================================================
-   5. Header & Navigation (使い回し用にクラス名を統合)
-   ========================================================================== */
-.site-header {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 80px;
-  padding: 20px 5%;
-  background-color: var(--bg-main);
-  z-index: 100;
-}
-/* ※ .nav-capsule や .sns-btn などの記述はそのまま残してください */
-
-
-/* ==========================================================================
-   11. FAQ Section (新しく追加)
+   10. FAQ Section
    ========================================================================== */
 .faq-page {
   padding-bottom: 120px;
 }
-
 .faq-section {
   padding: 0 5%;
 }
-
 .faq-container {
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* カテゴリタイトル */
 .faq-category-title {
   margin: 50px 0 20px;
   padding-bottom: 10px;
@@ -941,7 +1066,6 @@ header.js-scroll-trigger,
   font-weight: 700;
 }
 
-/* アコーディオン本体 */
 .faq-item {
   margin-bottom: 16px;
   background-color: var(--color-white);
@@ -951,7 +1075,6 @@ header.js-scroll-trigger,
   overflow: hidden;
 }
 
-/* 質問部分 (クリックエリア) */
 .faq-q {
   position: relative;
   display: flex;
@@ -962,19 +1085,17 @@ header.js-scroll-trigger,
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  list-style: none; /* デフォルトの三角形を消す */
+  list-style: none;
   transition: background-color 0.3s ease;
 }
 
 .faq-q::-webkit-details-marker {
-  display: none; /* Safari用の三角形を消す */
+  display: none;
 }
-
 .faq-q:hover {
   background-color: var(--bg-sub);
 }
 
-/* "Q" のアイコン */
 .faq-icon-q {
   display: inline-flex;
   justify-content: center;
@@ -990,7 +1111,6 @@ header.js-scroll-trigger,
   font-weight: bold;
 }
 
-/* 開閉アイコン (＋ と －) */
 .faq-toggle-icon {
   position: absolute;
   right: 20px;
@@ -1017,19 +1137,17 @@ header.js-scroll-trigger,
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-/* アコーディオンが開いた時 */
 details[open] .faq-q {
   border-bottom: 1px dashed rgba(202, 144, 196, 0.3);
 }
 
 details[open] .faq-toggle-icon::after {
-  transform: translate(-50%, -50%) rotate(0deg); /* ＋が－になる */
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
-/* 回答部分 */
 .faq-a {
   padding: 24px 20px 24px 60px;
-  background-color: #FAF0F7;
+  background-color: #faf0f7;
   color: var(--text-main);
   font-size: 0.95rem;
   line-height: 1.8;
@@ -1045,36 +1163,26 @@ details[open] .faq-toggle-icon::after {
   margin-bottom: 6px;
 }
 
-/* 開閉アニメーション用 */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* スマホ対応 */
-@media (max-width: 600px) {
-  .faq-q {
-    padding: 16px 40px 16px 16px;
-    font-size: 0.95rem;
-  }
-  .faq-a {
-    padding: 20px 16px 20px 16px;
-    font-size: 0.9rem;
-  }
-  .faq-category-title {
-    font-size: 1.15rem;
-  }
-}/* ==========================================================================
-   12. Reference Section
+/* ==========================================================================
+   11. Reference Section
    ========================================================================== */
 .ref-page {
   padding-bottom: 120px;
 }
-
 .ref-section {
   padding: 0 5%;
 }
-
 .ref-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -1093,7 +1201,6 @@ details[open] .faq-toggle-icon::after {
   font-weight: 700;
 }
 
-/* カードグリッド */
 .ref-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1104,7 +1211,6 @@ details[open] .faq-toggle-icon::after {
   grid-template-columns: 1fr;
 }
 
-/* カードデザイン */
 .ref-card {
   display: flex;
   flex-direction: column;
@@ -1114,7 +1220,9 @@ details[open] .faq-toggle-icon::after {
   border: 1px solid rgba(202, 144, 196, 0.3);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(89, 73, 93, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .ref-card:hover {
@@ -1123,7 +1231,7 @@ details[open] .faq-toggle-icon::after {
 }
 
 .ref-card.highlight-card {
-  background: linear-gradient(145deg, #FFFFFF 0%, var(--bg-sub) 100%);
+  background: linear-gradient(145deg, #ffffff 0%, var(--bg-sub) 100%);
   border: 2px solid var(--color-orchid);
 }
 
@@ -1147,7 +1255,6 @@ details[open] .faq-toggle-icon::after {
   flex-grow: 1;
 }
 
-/* カテゴリタグ */
 .ref-tag {
   display: inline-block;
   padding: 4px 12px;
@@ -1156,12 +1263,24 @@ details[open] .faq-toggle-icon::after {
   font-weight: bold;
 }
 
-.tag-info { background-color: var(--color-lavender); color: var(--text-main); }
-.tag-experience { background-color: var(--color-pink); color: var(--text-main); }
-.tag-service { background-color: var(--color-yellow); color: var(--text-dark); }
-.tag-shop { background-color: #EFEBF5; color: var(--text-main); border: 1px solid #D8CEE3; }
+.tag-info {
+  background-color: var(--color-lavender);
+  color: var(--text-main);
+}
+.tag-experience {
+  background-color: var(--color-pink);
+  color: var(--text-main);
+}
+.tag-service {
+  background-color: var(--color-yellow);
+  color: var(--text-dark);
+}
+.tag-shop {
+  background-color: #efebf5;
+  color: var(--text-main);
+  border: 1px solid #d8cee3;
+}
 
-/* リンクボタン */
 .ref-btn {
   display: inline-flex;
   justify-content: center;
@@ -1182,160 +1301,159 @@ details[open] .faq-toggle-icon::after {
   color: var(--color-white);
 }
 
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .ref-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .ref-card {
-    padding: 20px;
-  }
+/* ==========================================================================
+   12. Footer Section
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  padding: 60px 20px;
+  background-color: var(--color-lavender);
+  text-align: center;
 }
-/* ===================================
-   スマホ用のヘッダー中央揃え調整
-   =================================== */
 
-/* 1. ヘッダー全体とカプセルを中央に寄せる */
-.about-header {
+.social-icons {
   display: flex;
-  justify-content: center; /* 横方向の中央寄せ */
-  align-items: center;     /* 縦方向の中央寄せ */
-  width: 100%;
-}
-.site-header{
-  display: flex;
-  justify-content: center; /* 横方向の中央寄せ */
-  align-items: center;     /* 縦方向の中央寄せ */
-  width: 100%;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-.nav-capsule {
-  display: flex;
-  justify-content: center; /* 中のボタンを中央寄せ */
-  align-items: center;
-  flex-wrap: wrap;         /* スマホで幅が足りない時に綺麗に折り返す */
-  margin: 0 auto;          /* 左右中央に配置 */
-}
-
-/* 2. スマホ画面（画面幅768px以下）用の詳細調整 */
-@media (max-width: 768px) {
-  .about-header {
-    padding: 10px 0;       /* 上下の余白調整 */
-  }
-
-  .nav-capsule {
-    width: 90%;            /* スマホ画面からはみ出さないよう幅を調整 */
-    max-width: 400px;      /* 広がりすぎ防止 */
-    gap: 6px;              /* ボタン同士のすき間 */
-    padding: 8px 12px;
-  }
-
-  .nav-item {
-    text-align: center;    /* ボタン内のテキストを中央寄せ */
-    font-size: 12px;       /* スマホ用に文字サイズを少し調整（お好みで変更可） */
-  }
-}/* ===================================
-   Spline 3Dモデル用のスタイル
-   =================================== */
-.hero-spline-wrapper {
-  width: 100%;
-  height: 60vh;        /* 画面の高さの60%（お好みで調整してください） */
-  min-height: 400px;   /* 最低でも400pxの高さは確保する */
+.social-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  z-index: 10;         /* 他の要素の下に隠れないようにする */
+  width: 44px;
+  height: 44px;
+  background-color: var(--bg-main);
+  border-radius: 50%;
 }
 
-/* 3Dビューア自体を枠いっぱいに広げる */
-.hero-spline-wrapper spline-viewer {
-  width: 100%;
-  height: 100%;
+.copyright {
+  font-size: 0.85rem;
 }
 
-/* スマホ画面用の高さ調整 */
+/* ==========================================================================
+   13. Responsive Adjustments (メディアクエリ統合)
+   ========================================================================== */
+/* タブレット〜PC中間（960px以下） */
+@media (max-width: 960px) {
+  .about-header,
+  .simulator-header,
+  .site-header {
+    padding: 15px 20px;
+  }
+
+  .simulator-layout {
+    grid-template-columns: 1fr;
+  }
+  .sim-result-sticky {
+    position: static;
+  }
+  .about-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sticky-service-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .sticky-img-col {
+    max-width: 260px;
+  }
+  .teardrop-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+/* タブレット・スマホ（768px以下） */
 @media (max-width: 768px) {
+  .hero-side-left,
+  .hero-side-right {
+    top: 20px;
+  }
+  .dummy-qr {
+    width: 30px;
+    height: 30px;
+  }
+  .topics-title {
+    top: 10px;
+  }
+  .topics-grid {
+    grid-template-columns: 1fr;
+    margin-top: 80px;
+  }
+  .span-2-rows {
+    grid-row: auto;
+  }
+  .about-block {
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+  .message-block {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .message-circle-dummy {
+    width: 160px;
+    height: 160px;
+  }
   .hero-spline-wrapper {
     height: 50vh;
     min-height: 300px;
   }
-}/* ===================================
-   ローディング画面用のスタイル (お花のアニメーション)
-   =================================== */
-#loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  /* 背景をニュアンスホワイトに設定 */
-  background-color: var(--bg-main); 
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 1s ease, visibility 1s ease;
-}
-
-#loading-screen.is-loaded {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* お花のベース設定 */
-.flower {
-  font-family: 'Kaisei Decol', sans-serif;
-  font-weight: 100;
-  color: var(--text-main);
-}
-
-.flower:not(:required) {
-  overflow: hidden;
-  position: relative;
-  text-indent: -9999px;
-  display: inline-block;
-  
-  /* 中央のドットサイズ */
-  width: 16px;
-  height: 16px;
-  
-  /* 中心の色：ハニーイエロー */
-  background: var(--color-yellow); 
-  border-radius: 100%;
-  
-  /* 花びらの色：ミディアムオーキッド */
-  box-shadow:
-    white 0 0 15px 0,
-    var(--color-orchid) -12px -12px 0 4px,
-    var(--color-orchid) 12px -12px 0 4px,
-    var(--color-orchid) 12px 12px 0 4px,
-    var(--color-orchid) -12px 12px 0 4px;
-    
-  animation: flower 5s infinite ease-in-out;
-  transform-origin: 50% 50%;
-}
-
-/* 回転アニメーションのキーフレーム */
-@keyframes flower {
-  0% {
-    transform: rotateZ(0deg);
-    box-shadow:
-      white 0 0 15px 0,
-      var(--color-orchid) -12px -12px 0 4px,
-      var(--color-orchid) 12px -12px 0 4px,
-      var(--color-orchid) 12px 12px 0 4px,
-      var(--color-orchid) -12px 12px 0 4px;
+  .ref-grid {
+    grid-template-columns: 1fr;
   }
-  50% {
-    transform: rotateZ(1080deg); /* 3 * 360deg */
-    box-shadow:
-      white 0 0 15px 0,
-      var(--color-orchid) 12px 12px 0 4px,
-      var(--color-orchid) -12px 12px 0 4px,
-      var(--color-orchid) -12px -12px 0 4px,
-      var(--color-orchid) 12px -12px 0 4px;
+  .ref-card {
+    padding: 20px;
+  }
+
+  /* スマホのヘッダー・カプセルナビ調整 */
+  .nav-capsule {
+    width: 92%;
+    max-width: 400px;
+    gap: 2px;
+    padding: 6px 10px;
+  }
+
+  .nav-item {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+/* スマホ小型（600px以下） */
+@media (max-width: 600px) {
+  .about-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-item {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .sim-card {
+    padding: 20px 16px;
+  }
+  .opt-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .opt-price {
+    text-align: left;
+  }
+  .faq-q {
+    padding: 16px 40px 16px 16px;
+    font-size: 0.95rem;
+  }
+  .faq-a {
+    padding: 20px 16px 20px 16px;
+    font-size: 0.9rem;
+  }
+  .faq-category-title {
+    font-size: 1.15rem;
   }
 }
