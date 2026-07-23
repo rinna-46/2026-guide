@@ -396,24 +396,24 @@ header.js-scroll-trigger,
 }
 
 /* タイトルテキスト (FLASTA NAVI) */
-.hero-title,
-.hero-huge-text {
-  position: absolute;
-  bottom: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  color: var(--color-white);
-  font-size: clamp(2.5rem, 8vw, 7rem);
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
-  z-index: 10;
-  margin: 0;
+.hero-title {
+  .hero-huge-text {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    color: var(--color-white);
+    font-size: clamp(2.5rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    z-index: 10;
+    margin: 0;
+  }
 }
-
 .text-gold {
   color: #fff0fa;
 }
