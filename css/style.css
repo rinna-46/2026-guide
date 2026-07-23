@@ -17,7 +17,53 @@
    12. Footer Section
    13. Responsive Adjustments (メディアクエリ統合)
    ========================================================================== */
+/* ==========================================================================
+   Hero Section 構造リセット & 中央配置の完全修正
+   ========================================================================== */
 
+/* 1. ヒーローエリア全体を基準にする（Flex横並び事故を防止） */
+.hero-section {
+  position: relative !important;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: block !important; /* flexで横並びにならないようblockに固定 */
+  overflow: hidden;
+}
+
+/* 2. 赤枠の原因になっている3Dモデル/枠を画面いっぱいの背景層にする */
+.hero-spline-wrapper {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important; /* 文字の下に配置 */
+}
+
+/* 3. 文字を最前面（z-index: 20）の真ん中に固定する */
+.hero-title,
+.hero-huge-text {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+  width: auto !important;
+  max-width: 90vw;
+  margin: 0 !important;
+  padding: 0;
+  text-align: center;
+  z-index: 20 !important; /* 3Dモデルや背景画像より上に重ねる */
+
+  /* デザイン設定 */
+  color: var(--color-white);
+  font-size: clamp(2.5rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
 /* ==========================================================================
    1. Variables & Theme Settings
    ========================================================================== */
