@@ -14,6 +14,51 @@
    9. Footer Section
    10. Responsive Adjustments (メディアクエリ統合)
    ========================================================================== */
+
+/* ==========================================================================
+   ヒーローエリア（トップ画像＋タイトル）の高さ調整
+   ========================================================================== */
+
+/* 1. ヒーローエリア全体の枠組み */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 500px; /* ★紫の背景が下まで伸びるよう十分な高さを確保 */
+  height: 65vh; /* 画面の高さの約65%をヒーローエリアにする */
+  display: flex;
+  align-items: center; /* 文字を上下中央に配置 */
+  justify-content: center; /* 文字を左右中央に配置 */
+  overflow: hidden;
+}
+
+/* 2. 背景画像の全画面敷き詰めの指定 */
+.hero-main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像を引き伸ばさずエリア全体を覆う */
+  object-position: top center; /* 上のお花部分が切れないように上基準で表示 */
+  display: block;
+}
+
+/* 3. 「FLASTA NAVI」文字の重ね合わせと装飾 */
+.hero-title {
+  position: relative;
+  z-index: 1; /* 画像（z-index: 0）より手前に表示 */
+  color: #ffffff; /* 文字色を白に */
+  text-align: center;
+  /* ほんのり影をつけると、画像の上でも文字がさらに見やすくなります */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 hero-main-img {
   position: absolute;
   top: 0;
