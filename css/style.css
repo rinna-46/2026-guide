@@ -255,6 +255,13 @@ spline-viewer {
   object-fit: cover;    /* 縦横比を崩さずに枠いっぱいに拡大 */
   display: block;
 }
+.hero-spline-wrapper,
+.hero-main-img {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 .qr-group {
   display: flex;
