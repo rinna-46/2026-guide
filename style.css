@@ -14,11 +14,7 @@
    9. Footer Section
    10. Responsive Adjustments (メディアクエリ統合)
    ========================================================================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 /* ==========================================================================
    1. Variables & Theme Settings
    ========================================================================== */
@@ -261,40 +257,6 @@ header.js-scroll-trigger,
 }
 .hero-side-right {
   right: 3%;
-}
-
-.hero-section img,
-.hero-spline-wrapper,
-spline-viewer {
-  width: 100%;
-  height: 100%;
-  max-width: none; /* 幅の制限を解除 */
-  object-fit: cover; /* 縦横比を崩さずに枠いっぱいに拡大 */
-  display: block;
-}
-.hero-spline-wrapper,
-.hero-main-img {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* 画面の端から端まで目一杯に広げる場合 */
-.hero-center-content {
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-}
-
-.hero-main-img {
-  width: 100%;
-}
-
-.hero-main-img img {
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 .qr-group {
@@ -1141,7 +1103,7 @@ spline-viewer {
   margin: 0 auto;
 }
 
-/* カテゴリタイトルv */
+/* カテゴリタイトル */
 .faq-category-title {
   margin: 50px 0 20px;
   padding-bottom: 10px;
@@ -1571,4 +1533,74 @@ details[open] .faq-toggle-icon::after {
       var(--color-orchid) -12px -12px 0 4px,
       var(--color-orchid) 12px -12px 0 4px;
   }
+}
+/* ==========================================================================
+   1. ヒーローエリア全体の基準設定
+   ========================================================================== */
+.hero-section {
+  position: relative; /* ★中のヘッダーやタイトルを重ねる基準になります */
+  width: 100%;
+  min-height: 100vh; /* 画面全体の高さ（またはデザインに応じた高さ） */
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   2. ヘッダー（カプセルナビ）を画像の上に浮かせて中央配置
+   ========================================================================== */
+.site-header {
+  position: absolute; /* ★背景画像の上に浮かせます */
+  top: 20px; /* 上からの余白 */
+  left: 50%; /* 左右中央に寄せるための起点 */
+  transform: translateX(-50%); /* 完全に画面中央に配置 */
+  width: 90%;
+  max-width: 440px; /* カプセルナビの最大幅 */
+  z-index: 10; /* ★画像や文字よりも一番手前に表示 */
+}
+
+/* カプセルナビ本体 */
+.nav-capsule {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85); /* ほんのり透ける白 */
+  backdrop-filter: blur(8px); /* すりガラス効果 */
+  border-radius: 50px; /* カプセル型にする */
+  padding: 10px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   3. 背景画像（全画面敷き詰め）
+   ========================================================================== */
+.hero-main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* ★一番後ろに配置 */
+}
+
+.hero-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像を崩さず枠いっぱいに広げる */
+  object-position: center;
+  display: block;
+}
+
+/* ==========================================================================
+   4. タイトル文字（FLASTA NAVI）
+   ========================================================================== */
+.hero-title {
+  position: absolute;
+  bottom: 15%; /* 画像の下側（紫のグラデーション位置）に配置 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  z-index: 1; /* ★画像の上、ヘッダー（z-index:10）の下に配置 */
+  color: #ffffff;
+  font-size: 2.2rem;
+  margin: 0;
 }
