@@ -1,5 +1,57 @@
 @charset "UTF-8";
+/* ヒーローエリア全体 */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background-color: var(--bg-sub);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  overflow: hidden;
+}
 
+/* 中央コンテンツ（幅を制限して中央に置くだけ） */
+.hero-center-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 900px; /* 画面が大きくても広がりすぎない */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+/* 画像：親要素（900px）の幅に合わせて勝手に縮小・拡大 */
+.hero-main-img {
+  width: 100%;
+}
+
+.hero-main-img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* タイトルテキスト：画面幅（vw）に合わせて文字サイズが自動変化 */
+.hero-huge-text {
+  color: var(--color-yellow);
+  font-size: clamp(2rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+/* サブ要素 */
+.hero-sub-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
 /* ==========================================================================
    1. Variables & Theme Settings
    ========================================================================== */
