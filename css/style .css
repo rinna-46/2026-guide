@@ -14,21 +14,35 @@
    9. Footer Section
    10. Responsive Adjustments (メディアクエリ統合)
    ========================================================================== */
+hero-main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* ヘッダーやテキストの背面に配置 */
+}
 
+.hero-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 縦横比を保ちながら領域いっぱいに広げる */
+  object-position: center; /* 常に画像の中央を表示する */
+}
 /* ==========================================================================
    1. Variables & Theme Settings
    ========================================================================== */
 :root {
-  --bg-main: #F9F6FC;         /* ニュアンスホワイト */
-  --bg-sub: #FFF0FA;          /* シェルピンク */
-  --color-pink: #F2CBE4;      /* パステルピンク */
-  --color-lavender: #D7C3F1;  /* ソフトラベンダー */
-  --color-orchid: #CA90C4;    /* ミディアムオーキッド */
-  --color-gold: #FFB703;      /* マリーゴールド */
-  --color-yellow: #FFCA3A;    /* ハニーイエロー */
-  --text-main: #59495D;       /* ディープパープルグレー */
-  --text-dark: #1A1A1A;       /* ダークテキスト */
-  --color-white: #FFFFFF;
+  --bg-main: #f9f6fc; /* ニュアンスホワイト */
+  --bg-sub: #fff0fa; /* シェルピンク */
+  --color-pink: #f2cbe4; /* パステルピンク */
+  --color-lavender: #d7c3f1; /* ソフトラベンダー */
+  --color-orchid: #ca90c4; /* ミディアムオーキッド */
+  --color-gold: #ffb703; /* マリーゴールド */
+  --color-yellow: #ffca3a; /* ハニーイエロー */
+  --text-main: #59495d; /* ディープパープルグレー */
+  --text-dark: #1a1a1a; /* ダークテキスト */
+  --color-white: #ffffff;
 }
 
 /* ==========================================================================
@@ -40,7 +54,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Kaisei Decol', serif !important;
+  font-family: "Kaisei Decol", serif !important;
 }
 
 body {
@@ -62,7 +76,9 @@ a {
 .js-scroll-trigger {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .js-scroll-trigger.is-active {
@@ -77,9 +93,15 @@ header.js-scroll-trigger,
   transform: none !important;
 }
 
-.delay-1 { transition-delay: 0.15s; }
-.delay-2 { transition-delay: 0.3s; }
-.delay-3 { transition-delay: 0.45s; }
+.delay-1 {
+  transition-delay: 0.15s;
+}
+.delay-2 {
+  transition-delay: 0.3s;
+}
+.delay-3 {
+  transition-delay: 0.45s;
+}
 
 /* ==========================================================================
    4. Common UI Components
@@ -89,11 +111,12 @@ header.js-scroll-trigger,
   width: 100%;
   height: 100%;
   background-color: var(--color-pink);
-  background-image: 
-    radial-gradient(var(--bg-main) 15%, transparent 16%),
-    radial-gradient(var(--bg-main) 15%, transparent 16%);
+  background-image:
+    radial-gradient(var(--bg-main) 15%, transparent 16%), radial-gradient(var(--bg-main) 15%, transparent 16%);
   background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
+  background-position:
+    0 0,
+    10px 10px;
   opacity: 0.85;
 }
 
@@ -161,8 +184,8 @@ header.js-scroll-trigger,
   align-items: center;
   gap: 4px;
   padding: 6px 12px;
-  background-color: #EFEBF5;
-  border: 1px solid #D8CEE3;
+  background-color: #efebf5;
+  border: 1px solid #d8cee3;
   border-radius: 30px;
   z-index: 10;
   white-space: nowrap;
@@ -243,8 +266,12 @@ header.js-scroll-trigger,
   z-index: 15;
 }
 
-.hero-side-left { left: 3%; }
-.hero-side-right { right: 3%; }
+.hero-side-left {
+  left: 3%;
+}
+.hero-side-right {
+  right: 3%;
+}
 
 .qr-group {
   display: flex;
@@ -274,7 +301,10 @@ header.js-scroll-trigger,
   writing-mode: vertical-rl;
   opacity: 0.7;
   cursor: pointer;
-  transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .vertical-btn:hover {
@@ -299,7 +329,7 @@ header.js-scroll-trigger,
 }
 
 .text-gold {
-  color: #FFF0FA;
+  color: #fff0fa;
 }
 
 /* ABOUT ヒーロー */
@@ -320,7 +350,7 @@ header.js-scroll-trigger,
 
 .about-hero-sub {
   margin-bottom: 50px;
-  color: #9C58B2;
+  color: #9c58b2;
   font-size: 0.95rem;
   font-weight: bold;
 }
@@ -350,7 +380,7 @@ header.js-scroll-trigger,
 
 .page-hero-sub {
   margin-bottom: 20px;
-  color: #9C58B2;
+  color: #9c58b2;
   font-size: 0.95rem;
   font-weight: bold;
 }
@@ -385,17 +415,20 @@ header.js-scroll-trigger,
   align-items: center;
   min-height: 180px;
   padding: 40px 24px;
-  background-color: #FAF0F7;
+  background-color: #faf0f7;
   border: 1px solid rgba(202, 144, 196, 0.25);
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(89, 73, 93, 0.08);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
   cursor: pointer;
 }
 
 .about-card:hover {
-  background-color: #F6E2F0;
+  background-color: #f6e2f0;
   box-shadow: 0 18px 36px rgba(89, 73, 93, 0.16);
   transform: translateY(-8px);
 }
@@ -408,7 +441,7 @@ header.js-scroll-trigger,
 }
 
 .about-card p {
-  color: #7A697E;
+  color: #7a697e;
   font-size: 0.88rem;
   line-height: 1.6;
 }
@@ -444,10 +477,24 @@ header.js-scroll-trigger,
   z-index: 1;
 }
 
-.span-2-rows { grid-row: span 2; }
-.grid-item--orchid { background-color: var(--color-orchid); color: var(--color-white); padding: 40px 30px; }
-.grid-item--lavender { background-color: var(--color-lavender); color: var(--text-main); padding: 40px 30px; }
-.grid-item--pink { background-color: var(--color-pink); color: var(--text-main); padding: 40px 30px; }
+.span-2-rows {
+  grid-row: span 2;
+}
+.grid-item--orchid {
+  background-color: var(--color-orchid);
+  color: var(--color-white);
+  padding: 40px 30px;
+}
+.grid-item--lavender {
+  background-color: var(--color-lavender);
+  color: var(--text-main);
+  padding: 40px 30px;
+}
+.grid-item--pink {
+  background-color: var(--color-pink);
+  color: var(--text-main);
+  padding: 40px 30px;
+}
 
 .grid-item h3 {
   margin-bottom: 15px;
@@ -474,9 +521,18 @@ header.js-scroll-trigger,
   margin: 0 auto 120px;
 }
 
-.about-text { flex: 1.2; }
-.about-text h2 { margin-bottom: 30px; color: var(--text-main); font-size: clamp(1.4rem, 3vw, 2.2rem); }
-.about-text p { margin-bottom: 16px; font-size: clamp(0.85rem, 1.1vw, 1rem); }
+.about-text {
+  flex: 1.2;
+}
+.about-text h2 {
+  margin-bottom: 30px;
+  color: var(--text-main);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+.about-text p {
+  margin-bottom: 16px;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+}
 
 .about-images {
   display: flex;
@@ -518,8 +574,15 @@ header.js-scroll-trigger,
   z-index: 2;
 }
 
-.message-content { position: relative; z-index: 3; }
-.message-content h3 { margin-bottom: 24px; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.7; }
+.message-content {
+  position: relative;
+  z-index: 3;
+}
+.message-content h3 {
+  margin-bottom: 24px;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+}
 
 /* Service Section */
 .service-section {
@@ -554,15 +617,30 @@ header.js-scroll-trigger,
   align-items: center;
   width: 100px;
   height: 100px;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   border-radius: 50%;
   font-size: 2rem;
 }
 
-.service-content { flex: 1; }
-.service-num { display: block; margin-bottom: 4px; color: #AAA; font-size: 0.9rem; }
-.service-content h3 { font-size: 1.5rem; line-height: 1.2; letter-spacing: 0.05em; }
-.service-sub-ja { margin-bottom: 16px; color: #999; font-size: 0.8rem; }
+.service-content {
+  flex: 1;
+}
+.service-num {
+  display: block;
+  margin-bottom: 4px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+.service-content h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+.service-sub-ja {
+  margin-bottom: 16px;
+  color: #999;
+  font-size: 0.8rem;
+}
 
 /* Sticky Service */
 .sticky-service-section {
@@ -570,7 +648,10 @@ header.js-scroll-trigger,
   background-color: var(--color-white);
 }
 
-.sticky-service-inner { position: relative; height: 280vh; }
+.sticky-service-inner {
+  position: relative;
+  height: 280vh;
+}
 .sticky-service-sticky {
   position: sticky;
   top: 0;
@@ -592,7 +673,10 @@ header.js-scroll-trigger,
   margin: 0 auto;
 }
 
-.sticky-text-col { position: relative; min-height: 240px; }
+.sticky-text-col {
+  position: relative;
+  min-height: 240px;
+}
 .service-text-item {
   position: absolute;
   top: 0;
@@ -601,7 +685,9 @@ header.js-scroll-trigger,
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .service-text-item.is-active {
@@ -620,20 +706,32 @@ header.js-scroll-trigger,
 
 .service-img-item {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transform: scale(0.92);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
-.service-img-item.is-active { opacity: 1; transform: scale(1); }
-.service-circle-frame { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; }
+.service-img-item.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.service-circle-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
 /* Teardrop Section */
 .teardrop-section {
   padding: 100px 8%;
-  background-color: #E7DEEE;
+  background-color: #e7deee;
 }
 
 .teardrop-grid {
@@ -644,7 +742,9 @@ header.js-scroll-trigger,
   margin: 0 auto;
 }
 
-.teardrop-item { text-align: center; }
+.teardrop-item {
+  text-align: center;
+}
 .teardrop-img-box {
   width: 200px;
   height: 240px;
@@ -734,9 +834,22 @@ header.js-scroll-trigger,
   box-shadow: 0 4px 12px rgba(202, 144, 196, 0.25);
 }
 
-.opt-name { font-size: 0.92rem; font-weight: 500; }
-.opt-price { font-size: 0.95rem; font-weight: 700; color: #9C58B2; text-align: right; }
-.opt-price small { display: block; font-size: 0.75rem; font-weight: normal; color: #888; }
+.opt-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.opt-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #9c58b2;
+  text-align: right;
+}
+.opt-price small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: #888;
+}
 
 /* 数量フォーム */
 .qty-list {
@@ -750,7 +863,7 @@ header.js-scroll-trigger,
   justify-content: space-between;
   align-items: center;
   padding-bottom: 12px;
-  border-bottom: 1px dashed #EFEBF5;
+  border-bottom: 1px dashed #efebf5;
 }
 
 .qty-item:last-child {
@@ -758,8 +871,13 @@ header.js-scroll-trigger,
   padding-bottom: 0;
 }
 
-.qty-name { font-size: 0.9rem; }
-.qty-name small { color: #9C58B2; margin-left: 6px; }
+.qty-name {
+  font-size: 0.9rem;
+}
+.qty-name small {
+  color: #9c58b2;
+  margin-left: 6px;
+}
 
 .qty-input {
   width: 85px;
@@ -789,15 +907,23 @@ header.js-scroll-trigger,
 
 .result-card {
   padding: 32px 24px;
-  background: linear-gradient(145deg, #FFFFFF 0%, var(--bg-sub) 100%);
+  background: linear-gradient(145deg, #ffffff 0%, var(--bg-sub) 100%);
   border: 2px solid var(--color-orchid);
   border-radius: 24px;
   box-shadow: 0 12px 30px rgba(89, 73, 93, 0.1);
   text-align: center;
 }
 
-.result-label { font-size: 0.9rem; font-weight: bold; color: var(--text-main); }
-.result-price-box { margin: 16px 0; font-size: 1.2rem; font-weight: bold; }
+.result-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-main);
+}
+.result-price-box {
+  margin: 16px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
 .price-num {
   font-size: clamp(2.4rem, 4vw, 3.2rem);
@@ -816,7 +942,11 @@ header.js-scroll-trigger,
   text-align: left;
 }
 
-.tax-title { margin-bottom: 4px; color: #9C58B2; font-weight: bold; }
+.tax-title {
+  margin-bottom: 4px;
+  color: #9c58b2;
+  font-weight: bold;
+}
 
 /* ==========================================================================
    9. Footer Section
@@ -845,7 +975,9 @@ header.js-scroll-trigger,
   border-radius: 50%;
 }
 
-.copyright { font-size: 0.85rem; }
+.copyright {
+  font-size: 0.85rem;
+}
 
 /* ==========================================================================
    10. Responsive Adjustments
@@ -870,34 +1002,89 @@ header.js-scroll-trigger,
     margin-left: 0;
   }
 
-  .simulator-layout { grid-template-columns: 1fr; }
-  .sim-result-sticky { position: static; }
-  .about-card-grid { grid-template-columns: repeat(2, 1fr); }
-  .sticky-service-content { grid-template-columns: 1fr; gap: 30px; }
-  .sticky-img-col { max-width: 260px; }
-  .teardrop-grid { grid-template-columns: 1fr; gap: 60px; }
+  .simulator-layout {
+    grid-template-columns: 1fr;
+  }
+  .sim-result-sticky {
+    position: static;
+  }
+  .about-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sticky-service-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .sticky-img-col {
+    max-width: 260px;
+  }
+  .teardrop-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
 }
 
 /* タブレット・スマホ（768px以下） */
 @media (max-width: 768px) {
-  .hero-side-left, .hero-side-right { top: 20px; }
-  .dummy-qr { width: 30px; height: 30px; }
-  .topics-title { top: 10px; }
-  .topics-grid { grid-template-columns: 1fr; margin-top: 80px; }
-  .span-2-rows { grid-row: auto; }
-  .about-block { flex-direction: column; gap: 40px; margin-bottom: 80px; }
-  .message-block { flex-direction: column; padding: 40px 20px; text-align: center; }
-  .message-circle-dummy { width: 160px; height: 160px; }
+  .hero-side-left,
+  .hero-side-right {
+    top: 20px;
+  }
+  .dummy-qr {
+    width: 30px;
+    height: 30px;
+  }
+  .topics-title {
+    top: 10px;
+  }
+  .topics-grid {
+    grid-template-columns: 1fr;
+    margin-top: 80px;
+  }
+  .span-2-rows {
+    grid-row: auto;
+  }
+  .about-block {
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+  .message-block {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .message-circle-dummy {
+    width: 160px;
+    height: 160px;
+  }
 }
 
 /* スマホ小型（600px以下） */
 @media (max-width: 600px) {
-  .nav-item { padding: 6px 12px; font-size: 0.8rem; }
-  .about-card-grid { grid-template-columns: 1fr; }
-  .service-item { flex-direction: column; gap: 20px; text-align: center; }
-  .sim-card { padding: 20px 16px; }
-  .opt-btn { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .opt-price { text-align: left; }
+  .nav-item {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  .about-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-item {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .sim-card {
+    padding: 20px 16px;
+  }
+  .opt-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .opt-price {
+    text-align: left;
+  }
 }
 /* ==========================================================================
    5. Header & Navigation (使い回し用にクラス名を統合)
@@ -913,7 +1100,6 @@ header.js-scroll-trigger,
   z-index: 100;
 }
 /* ※ .nav-capsule や .sns-btn などの記述はそのまま残してください */
-
 
 /* ==========================================================================
    11. FAQ Section (新しく追加)
@@ -1029,7 +1215,7 @@ details[open] .faq-toggle-icon::after {
 /* 回答部分 */
 .faq-a {
   padding: 24px 20px 24px 60px;
-  background-color: #FAF0F7;
+  background-color: #faf0f7;
   color: var(--text-main);
   font-size: 0.95rem;
   line-height: 1.8;
@@ -1047,8 +1233,14 @@ details[open] .faq-toggle-icon::after {
 
 /* 開閉アニメーション用 */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* スマホ対応 */
@@ -1064,7 +1256,7 @@ details[open] .faq-toggle-icon::after {
   .faq-category-title {
     font-size: 1.15rem;
   }
-}/* ==========================================================================
+} /* ==========================================================================
    12. Reference Section
    ========================================================================== */
 .ref-page {
@@ -1114,7 +1306,9 @@ details[open] .faq-toggle-icon::after {
   border: 1px solid rgba(202, 144, 196, 0.3);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(89, 73, 93, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .ref-card:hover {
@@ -1123,7 +1317,7 @@ details[open] .faq-toggle-icon::after {
 }
 
 .ref-card.highlight-card {
-  background: linear-gradient(145deg, #FFFFFF 0%, var(--bg-sub) 100%);
+  background: linear-gradient(145deg, #ffffff 0%, var(--bg-sub) 100%);
   border: 2px solid var(--color-orchid);
 }
 
@@ -1156,10 +1350,23 @@ details[open] .faq-toggle-icon::after {
   font-weight: bold;
 }
 
-.tag-info { background-color: var(--color-lavender); color: var(--text-main); }
-.tag-experience { background-color: var(--color-pink); color: var(--text-main); }
-.tag-service { background-color: var(--color-yellow); color: var(--text-dark); }
-.tag-shop { background-color: #EFEBF5; color: var(--text-main); border: 1px solid #D8CEE3; }
+.tag-info {
+  background-color: var(--color-lavender);
+  color: var(--text-main);
+}
+.tag-experience {
+  background-color: var(--color-pink);
+  color: var(--text-main);
+}
+.tag-service {
+  background-color: var(--color-yellow);
+  color: var(--text-dark);
+}
+.tag-shop {
+  background-color: #efebf5;
+  color: var(--text-main);
+  border: 1px solid #d8cee3;
+}
 
 /* リンクボタン */
 .ref-btn {
@@ -1187,7 +1394,7 @@ details[open] .faq-toggle-icon::after {
   .ref-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .ref-card {
     padding: 20px;
   }
@@ -1200,13 +1407,13 @@ details[open] .faq-toggle-icon::after {
 .about-header {
   display: flex;
   justify-content: center; /* 横方向の中央寄せ */
-  align-items: center;     /* 縦方向の中央寄せ */
+  align-items: center; /* 縦方向の中央寄せ */
   width: 100%;
 }
-.site-header{
+.site-header {
   display: flex;
   justify-content: center; /* 横方向の中央寄せ */
-  align-items: center;     /* 縦方向の中央寄せ */
+  align-items: center; /* 縦方向の中央寄せ */
   width: 100%;
 }
 
@@ -1214,39 +1421,39 @@ details[open] .faq-toggle-icon::after {
   display: flex;
   justify-content: center; /* 中のボタンを中央寄せ */
   align-items: center;
-  flex-wrap: wrap;         /* スマホで幅が足りない時に綺麗に折り返す */
-  margin: 0 auto;          /* 左右中央に配置 */
+  flex-wrap: wrap; /* スマホで幅が足りない時に綺麗に折り返す */
+  margin: 0 auto; /* 左右中央に配置 */
 }
 
 /* 2. スマホ画面（画面幅768px以下）用の詳細調整 */
 @media (max-width: 768px) {
   .about-header {
-    padding: 10px 0;       /* 上下の余白調整 */
+    padding: 10px 0; /* 上下の余白調整 */
   }
 
   .nav-capsule {
-    width: 90%;            /* スマホ画面からはみ出さないよう幅を調整 */
-    max-width: 400px;      /* 広がりすぎ防止 */
-    gap: 6px;              /* ボタン同士のすき間 */
+    width: 90%; /* スマホ画面からはみ出さないよう幅を調整 */
+    max-width: 400px; /* 広がりすぎ防止 */
+    gap: 6px; /* ボタン同士のすき間 */
     padding: 8px 12px;
   }
 
   .nav-item {
-    text-align: center;    /* ボタン内のテキストを中央寄せ */
-    font-size: 12px;       /* スマホ用に文字サイズを少し調整（お好みで変更可） */
+    text-align: center; /* ボタン内のテキストを中央寄せ */
+    font-size: 12px; /* スマホ用に文字サイズを少し調整（お好みで変更可） */
   }
-}/* ===================================
+} /* ===================================
    Spline 3Dモデル用のスタイル
    =================================== */
 .hero-spline-wrapper {
   width: 100%;
-  height: 60vh;        /* 画面の高さの60%（お好みで調整してください） */
-  min-height: 400px;   /* 最低でも400pxの高さは確保する */
+  height: 60vh; /* 画面の高さの60%（お好みで調整してください） */
+  min-height: 400px; /* 最低でも400pxの高さは確保する */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 10;         /* 他の要素の下に隠れないようにする */
+  z-index: 10; /* 他の要素の下に隠れないようにする */
 }
 
 /* 3Dビューア自体を枠いっぱいに広げる */
@@ -1261,7 +1468,7 @@ details[open] .faq-toggle-icon::after {
     height: 50vh;
     min-height: 300px;
   }
-}/* ===================================
+} /* ===================================
    ローディング画面用のスタイル (お花のアニメーション)
    =================================== */
 #loading-screen {
@@ -1271,12 +1478,14 @@ details[open] .faq-toggle-icon::after {
   width: 100%;
   height: 100vh;
   /* 背景をニュアンスホワイトに設定 */
-  background-color: var(--bg-main); 
+  background-color: var(--bg-main);
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 1s ease, visibility 1s ease;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
 }
 
 #loading-screen.is-loaded {
@@ -1287,7 +1496,7 @@ details[open] .faq-toggle-icon::after {
 
 /* お花のベース設定 */
 .flower {
-  font-family: 'Kaisei Decol', sans-serif;
+  font-family: "Kaisei Decol", sans-serif;
   font-weight: 100;
   color: var(--text-main);
 }
@@ -1297,15 +1506,15 @@ details[open] .faq-toggle-icon::after {
   position: relative;
   text-indent: -9999px;
   display: inline-block;
-  
+
   /* 中央のドットサイズ */
   width: 16px;
   height: 16px;
-  
+
   /* 中心の色：ハニーイエロー */
-  background: var(--color-yellow); 
+  background: var(--color-yellow);
   border-radius: 100%;
-  
+
   /* 花びらの色：ミディアムオーキッド */
   box-shadow:
     white 0 0 15px 0,
@@ -1313,7 +1522,7 @@ details[open] .faq-toggle-icon::after {
     var(--color-orchid) 12px -12px 0 4px,
     var(--color-orchid) 12px 12px 0 4px,
     var(--color-orchid) -12px 12px 0 4px;
-    
+
   animation: flower 5s infinite ease-in-out;
   transform-origin: 50% 50%;
 }
