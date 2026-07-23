@@ -265,6 +265,23 @@ spline-viewer {
   transform: translateX(-50%);
 }
 
+/* 画面の端から端まで目一杯に広げる場合 */
+.hero-center-content {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+}
+
+.hero-main-img {
+  width: 100%;
+}
+
+.hero-main-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .qr-group {
   display: flex;
   flex-direction: column;
