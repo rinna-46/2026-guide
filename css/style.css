@@ -398,15 +398,17 @@ header.js-scroll-trigger,
 /* タイトルテキスト (FLASTA NAVI) */
 .hero-title,
 .hero-huge-text {
-  position: absolute;
-  top: 50%; /* 上から50% */
-  left: 50%; /* 左から50% */
-  transform: translate(-50%, -50%); /* 文字自身の縦横サイズの半分だけ戻す */
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin: auto !important;
+  height: fit-content !important; /* 中身の文字の高さに合わせる */
 
   width: 100%;
-  margin: 0;
   text-align: center;
-  z-index: 10;
+  z-index: 20; /* 前面にしっかり出す */
 
   /* 文字の見た目設定 */
   color: var(--color-white);
