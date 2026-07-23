@@ -223,16 +223,7 @@ header.js-scroll-trigger,
 /* ==========================================================================
    6. Hero Areas
    ========================================================================== */
-/* TOP ヒーロー */
-.hero-section {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  background-color: var(--bg-sub);
-  border-bottom: 2px solid var(--color-orchid);
-  overflow: hidden;
-}
+
 
 .hero-bg-dummy {
   position: absolute;
